@@ -6,11 +6,11 @@ import tweepy
 import sys
 import re
 import io
+import os
 import time
 
 
-bearer_token = \
-    'AAAAAAAAAAAAAAAAAAAAANmAkAEAAAAAWuPFg8KhNybzTq3zzdgVytqT2SE%3DomchfegoeuBmkPFvTKhTUzj0QoLfVgtEmdya06BRzzacbc35dw'
+bearer_token = os.environ.get('BEARER_TOKEN')
 
 
 def create_dataset(bearer_token, tweet_id):
@@ -30,12 +30,12 @@ def create_dataset(bearer_token, tweet_id):
 
         # Write header row (feature column names of your choice)
 
-        w.writerow(['Time', 'Name', 'Username'])
+        w.writerow(['Created At', 'Name', 'Username'])
 
         # For each tweet matching hashtag, write relevant info to the spreadsheet
         try:
             for tweet in tweepy.Paginator(client.get_retweeters, tweet_id,user_fields=["created_at"],
-                    max_results=100).flatten(limit=100):
+                    max_results=100).flatten():
                 w.writerow([tweet.created_at, tweet.name, tweet.username])
 
         except tweepy.RateLimitError as exc:
