@@ -1,4 +1,4 @@
-![scraper-san-juan-gobierno](https://github.com/canovasjm/covid-19-san-juan/workflows//badge.svg)
+[![Get latest Retweets](https://github.com/deepwatersxyz/recent-retweeter/actions/workflows/run-twitter.yml/badge.svg?branch=main)](https://github.com/deepwatersxyz/recent-retweeter/actions/workflows/run-twitter.yml)
 
 # Recent retweeter for 
 
