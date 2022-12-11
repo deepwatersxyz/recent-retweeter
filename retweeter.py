@@ -35,7 +35,7 @@ def create_dataset(bearer_token, tweet_id):
         # For each tweet matching hashtag, write relevant info to the spreadsheet
         try:
             for tweet in tweepy.Paginator(client.get_retweeters, tweet_id,user_fields=["created_at"],
-                    max_results=100).flatten():
+                    max_results=100).flatten(limit=100):
                 w.writerow([tweet.created_at, tweet.name, tweet.username])
 
         except tweepy.RateLimitError as exc:
